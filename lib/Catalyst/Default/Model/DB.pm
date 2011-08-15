@@ -19,6 +19,9 @@ my $db_port  = '5432';
   local $/;
   open( my $fh, '<', 'environment.json' );
   my $json   = <$fh>;
+  if ( !$json ) {
+    open( my $fh, '<', '/home/dotcloud/environment.json' );
+  }
   print Dumper( $json );
   my $env = decode_json( $json );
   $db_user  = $env->{'DOTCLOUD_DATA_SQL_LOGIN'};
