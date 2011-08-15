@@ -20,12 +20,13 @@ my $db_port  = '5432';
   open( my $fh, '<', '/home/dotcloud/environment.json' );
   my $json   = <$fh>;
   if ( $json ) {
-      my $env = decode_json( $json );
-      $db_user  = $env->{'DOTCLOUD_DATA_SQL_LOGIN'};
-      $db_pass  = $env->{'DOTCLOUD_DATA_SQL_PASSWORD'};
-      $db_host  = $env->{'DOTCLOUD_DATA_SQL_HOST'};
-      $db_port  = $env->{'DOTCLOUD_DATA_SQL_PORT'};
-  print Dumper( $json );
+      print Dumper( $json );
+      #my $env = decode_json( $json );
+      #$db_user  = $env->{'DOTCLOUD_DATA_SQL_LOGIN'};
+      #$db_pass  = $env->{'DOTCLOUD_DATA_SQL_PASSWORD'};
+      #$db_host  = $env->{'DOTCLOUD_DATA_SQL_HOST'};
+      #$db_port  = $env->{'DOTCLOUD_DATA_SQL_PORT'};
+
   }
 
 __PACKAGE__->config(
