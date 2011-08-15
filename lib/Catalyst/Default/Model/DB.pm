@@ -24,6 +24,7 @@ my $db_port  = '5432';
       $db_pass  = $env->{'DOTCLOUD_DATA_SQL_PASSWORD'};
       $db_host  = $env->{'DOTCLOUD_DATA_SQL_HOST'};
       $db_port  = $env->{'DOTCLOUD_DATA_SQL_PORT'};
+  print Dumper( $json );
   }
 
 __PACKAGE__->config(
