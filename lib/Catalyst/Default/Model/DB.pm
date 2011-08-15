@@ -13,7 +13,10 @@ my $db_pass  = 'catalyst';
 my $db_host  = 'localhost';
 my $db_port  = '5432';
 
+my $local_dev = 'environment.json';
+my $remote_dev = '/home/dotcloud/environment.json';
 
+my $environment = do { -e $remote_dev ? $remote_dev : $local_dev };
 
  # Override with the environment.json if it exists
  # (This is not the best way to do this, but it works for the tutorial)
