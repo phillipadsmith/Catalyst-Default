@@ -6,25 +6,19 @@ use JSON;
 use Data::Dumper;
 use IO::All;
 
-# Local development defaults
-
-my $db_user  = 'catalyst';
-my $db_pass  = 'catalyst';
-my $db_host  = 'localhost';
-my $db_port  = '5432';
-
 my $local_dev = 'environment.json';
 my $remote_dev = '/home/dotcloud/environment.json';
 
 my $environment = do { -e $remote_dev ? $remote_dev : $local_dev };
 # Override with the environment.json if it exists
 # (This is not the best way to do this, but it works for the tutorial)
-my $json < io "$environment";
-my $env = decode_json( $json );
-$db_user  = $env->{'DOTCLOUD_DATA_SQL_LOGIN'};
-$db_pass  = $env->{'DOTCLOUD_DATA_SQL_PASSWORD'};
-$db_host  = $env->{'DOTCLOUD_DATA_SQL_HOST'};
-$db_port  = $env->{'DOTCLOUD_DATA_SQL_PORT'};
+  my $json < io $environment;
+  my $env = decode_json( $json );
+  my $db_user  = $env->{'DOTCLOUD_DATA_SQL_LOGIN'};
+  my $db_pass  = $env->{'DOTCLOUD_DATA_SQL_PASSWORD'};
+  my $db_host  = $env->{'DOTCLOUD_DATA_SQL_HOST'};
+  my $db_port  = $env->{'DOTCLOUD_DATA_SQL_PORT'};
+
 
 __PACKAGE__->config(
     schema_class => 'Catalyst::Default::Schema',
