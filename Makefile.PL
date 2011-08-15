@@ -20,6 +20,8 @@ requires 'Config::General'; # This should reflect the config file format you've 
 requires 'Catalyst::Engine::PSGI';
 requires 'Catalyst::Plugin::StackTrace';
 requires 'DBIx::Class';
+requires 'Catalyst::Model::DBIC::Schema';
+requires 'JSON';
 
 test_requires 'Test::More' => '0.88';
 catalyst;
