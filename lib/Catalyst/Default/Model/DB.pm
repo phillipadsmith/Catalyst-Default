@@ -3,6 +3,7 @@ package Catalyst::Default::Model::DB;
 use strict;
 use base 'Catalyst::Model::DBIC::Schema';
 use JSON;
+use Data::Dumper;
 
 # Local development defaults
 
