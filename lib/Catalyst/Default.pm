@@ -40,6 +40,12 @@ __PACKAGE__->config(
     name => 'Catalyst::Default',
     # Disable deprecated behavior needed by old applications
     disable_component_resolution_regex_fallback => 1,
+    'View::HTML' => {
+        #Set the location for TT files
+        INCLUDE_PATH => [
+            __PACKAGE__->path_to( 'root', 'src' ),
+        ],
+    },
 );
 
 # Start the application
