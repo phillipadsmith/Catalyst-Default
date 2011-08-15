@@ -2,36 +2,14 @@ package Catalyst::Default::Model::DB;
 
 use strict;
 use base 'Catalyst::Model::DBIC::Schema';
-use JSON;
-
-# Local development defaults
-
-my $db_user  = 'catalyst';
-my $db_pass  = 'catalyst';
-my $db_host  = 'localhost';
-my $db_port  = '5432';
-
-
-
- # Override with the environment.json if it exists
- # (This is not the best way to do this, but it works for the tutorial)
-  local $/;
-  open( my $fh, '<', '/home/dotcloud/environment.json' );
-  my $json   = <$fh>;
-  if ( $json ) {
-      my $env = decode_json( $json );
-      $db_user  = $env->{'DOTCLOUD_DATA_SQL_LOGIN'} // 'catalyst';
-      $db_pass  = $env->{'DOTCLOUD_DATA_SQL_PASSWORD' // 'catalyst'};
-      $db_host  = $env->{'DOTCLOUD_DATA_SQL_HOST'} // 'localhost';
-      $db_port  = $env->{'DOTCLOUD_DATA_SQL_PORT'} // '';
-  }
 
 __PACKAGE__->config(
     schema_class => 'Catalyst::Default::Schema',
+    
     connect_info => {
-        dsn => "dbi:Pg:dbname=default-catalyst;host=$db_host;port=$db_port",
-        user => $db_user,
-        password => $db_pass,
+        dsn => 'dbi:Pg:dbname=default-catalyst',
+        user => 'catalyst',
+        password => 'catalyst',
         AutoCommit => q{1},
     }
 );
