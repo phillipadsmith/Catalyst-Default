@@ -9,6 +9,8 @@ __PACKAGE__->config(
     # Change default TT extension
     TEMPLATE_EXTENSION => '.tt2',
     render_die => 1,
+    # This is your wrapper template located in the 'root/src'
+    WRAPPER => 'wrapper.tt2',
 );
 
 =head1 NAME
