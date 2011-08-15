@@ -17,17 +17,15 @@ my $db_port  = '5432';
  # Override with the environment.json if it exists
  # (This is not the best way to do this, but it works for the tutorial)
   local $/;
-  open( my $fh, '<', '/home/dotcloud/environment.json' );
+  open( my $fh, '<', 'environment.json' );
   my $json   = <$fh>;
-  if ( $json ) {
-      print Dumper( $json );
-      #my $env = decode_json( $json );
-      #$db_user  = $env->{'DOTCLOUD_DATA_SQL_LOGIN'};
-      #$db_pass  = $env->{'DOTCLOUD_DATA_SQL_PASSWORD'};
-      #$db_host  = $env->{'DOTCLOUD_DATA_SQL_HOST'};
-      #$db_port  = $env->{'DOTCLOUD_DATA_SQL_PORT'};
+  print Dumper( $json );
+  my $env = decode_json( $json );
+  $db_user  = $env->{'DOTCLOUD_DATA_SQL_LOGIN'};
+  $db_pass  = $env->{'DOTCLOUD_DATA_SQL_PASSWORD'};
+  $db_host  = $env->{'DOTCLOUD_DATA_SQL_HOST'};
+  $db_port  = $env->{'DOTCLOUD_DATA_SQL_PORT'};
 
-  }
 
 __PACKAGE__->config(
     schema_class => 'Catalyst::Default::Schema',

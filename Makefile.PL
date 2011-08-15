@@ -23,6 +23,7 @@ requires 'DBIx::Class';
 requires 'Catalyst::Model::DBIC::Schema';
 requires 'JSON';
 requires 'Data::Dumper';
+requires 'MooseX::NonMoose';
 
 test_requires 'Test::More' => '0.88';
 catalyst;
