@@ -24,6 +24,8 @@ requires 'Catalyst::Model::DBIC::Schema';
 requires 'JSON';
 requires 'Data::Dumper';
 requires 'MooseX::NonMoose';
+requires 'DBD::Pg';
+requires 'IO::All';
 
 test_requires 'Test::More' => '0.88';
 catalyst;

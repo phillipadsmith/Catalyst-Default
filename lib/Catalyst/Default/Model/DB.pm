@@ -4,6 +4,7 @@ use strict;
 use base 'Catalyst::Model::DBIC::Schema';
 use JSON;
 use Data::Dumper;
+use IO::All;
 
 # Local development defaults
 
@@ -16,12 +17,7 @@ my $db_port  = '5432';
 
  # Override with the environment.json if it exists
  # (This is not the best way to do this, but it works for the tutorial)
-  local $/;
-  open( my $fh, '<', 'environment.json' );
-  my $json   = <$fh>;
-  if ( !$json ) {
-    open( my $fh, '<', '/home/dotcloud/environment.json' );
-  }
+  my $json < io "environment.json";
   print Dumper( $json );
   my $env = decode_json( $json );
   $db_user  = $env->{'DOTCLOUD_DATA_SQL_LOGIN'};
