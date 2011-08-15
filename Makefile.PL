@@ -21,6 +21,7 @@ requires 'Catalyst::Engine::PSGI';
 requires 'Catalyst::Plugin::StackTrace';
 requires 'DBIx::Class';
 requires 'Catalyst::Model::DBIC::Schema';
+requires 'Catalyst::Default::Schema';
 requires 'JSON';
 requires 'Catalyst::View::TT';
 
