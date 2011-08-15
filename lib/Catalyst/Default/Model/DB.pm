@@ -17,17 +17,14 @@ my $local_dev = 'environment.json';
 my $remote_dev = '/home/dotcloud/environment.json';
 
 my $environment = do { -e $remote_dev ? $remote_dev : $local_dev };
-print Dumper( $environment );
- # Override with the environment.json if it exists
- # (This is not the best way to do this, but it works for the tutorial)
-  my $json < io "$environment";
-  print Dumper( $json );
-  my $env = decode_json( $json );
-  $db_user  = $env->{'DOTCLOUD_DATA_SQL_LOGIN'};
-  $db_pass  = $env->{'DOTCLOUD_DATA_SQL_PASSWORD'};
-  $db_host  = $env->{'DOTCLOUD_DATA_SQL_HOST'};
-  $db_port  = $env->{'DOTCLOUD_DATA_SQL_PORT'};
-
+# Override with the environment.json if it exists
+# (This is not the best way to do this, but it works for the tutorial)
+my $json < io "$environment";
+my $env = decode_json( $json );
+$db_user  = $env->{'DOTCLOUD_DATA_SQL_LOGIN'};
+$db_pass  = $env->{'DOTCLOUD_DATA_SQL_PASSWORD'};
+$db_host  = $env->{'DOTCLOUD_DATA_SQL_HOST'};
+$db_port  = $env->{'DOTCLOUD_DATA_SQL_PORT'};
 
 __PACKAGE__->config(
     schema_class => 'Catalyst::Default::Schema',
